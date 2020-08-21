@@ -13,7 +13,7 @@ const Menu = () => {
 	return (
 		<>
 			<div
-				className="menu-btn"
+				className={isOpen ? 'menu-btn open' : 'menu-btn'}
 				onClick={toggleMenu}
 			>
 				<div className="btn-line" />
@@ -21,7 +21,7 @@ const Menu = () => {
 				<div className="btn-line" />
 			</div>
 			{isOpen && 
-				<nav className="menu" >
+				<nav className="menu" onClick={toggleMenu} >
 					<ul className="menu__list">
 						<li className="menu__list-item">
 							<Link to="/">Home</Link>

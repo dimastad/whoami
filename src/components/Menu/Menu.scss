@@ -11,6 +11,23 @@
   display: flex;
   transition: all 0.4s ease-out;
   background: rgba(24, 39, 51, 0.85);
+
+  &__list-item {
+    padding: 10px;
+    margin-bottom: 10px;
+
+    a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    &:hover {
+      a {
+        color: grey;
+      }
+    }
+  }
 }
 
 .menu-btn {
@@ -22,7 +39,8 @@
     height: 3px;
     margin: 0 0 5px 0;
     background-color: white;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    transform-origin: center right;
     
     &:last-child{
       margin-bottom: 0;
@@ -32,6 +50,25 @@
   &:hover {
     .btn-line {
       background-color: grey;
+    }
+  }
+
+  &.open {
+    .btn-line {
+      background-color: darkgray;
+
+      &:nth-child(2) {
+        opacity: 0;
+        width: 23px;
+      }
+      &:nth-child(1) {
+        transform: rotate(-45deg);
+        width: 23px;
+      }
+      &:nth-child(3) {
+        transform: rotate(45deg);
+        width: 23px;
+      }
     }
   }
 }

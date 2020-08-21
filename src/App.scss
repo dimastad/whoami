@@ -1,7 +1,9 @@
 .App {
   text-align: center;
-  background-image: url('./images/images.jpeg');
+  // background-image: url('./images/images.jpeg');
+  background-color: #000000;
   height: 100vh;
+  min-width: 320px;
 }
 
 .App-main {
