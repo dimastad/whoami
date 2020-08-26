@@ -12,14 +12,14 @@ const Menu = () => {
 	
 	return (
 		<>
-			<div
+			<Link to="#"
 				className={isOpen ? 'menu-btn open' : 'menu-btn'}
 				onClick={toggleMenu}
 			>
 				<div className="btn-line" />
 				<div className="btn-line" />
 				<div className="btn-line" />
-			</div>
+			</Link>
 			{isOpen && 
 				<nav className="menu" onClick={toggleMenu} >
 					<ul className="menu__list">

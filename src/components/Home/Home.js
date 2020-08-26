@@ -3,9 +3,9 @@ import React from 'react';
 const Home = () => {
 	return (
 		<>
-			I make UI 
+			I dev UI 
 			<br />
-			(...at least i try)
+			(...at least I try)
 		</>
 	)
 };
