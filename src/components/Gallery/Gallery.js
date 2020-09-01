@@ -1,45 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import UploadImage from '../UploadImage/UploadImage';
-import Image from '../Image/Image';
+import React, { useEffect, useState } from 'react'
+import UploadForm from '../UploadForm/UploadForm'
+import Image from '../Image/Image'
+import firebase from '../../util/firebase'
 import './Gallery.scss'
 
-import firebaseDb from '../../firebase'
-
 const Gallery = () => {
-
-	const [photoUrls, setPhotoUrls] = useState({})
-
+	const [photos, setPhotos] = useState()
+	
 	useEffect(() => {
-		firebaseDb
-			.child('photos')
-			.on('value', snapshot => {
-				if (snapshot.val() !== null)
-				setPhotoUrls({
-					...snapshot.val()
-				})
-			})
+		const imgRef = firebase.database().ref('Images')
+		imgRef.on('value', (snapshot) => {
+			const image = snapshot.val();
+			const photos = [];
+			for (const id in image) {
+				photos.push({ id, ...image[id] })
+			}
+			setPhotos(photos)
+		})
 	}, [])
-
-	const addUrl = (url) => {
-		firebaseDb
-			.child('photos')
-			.push(
-				url
-			)
-	}
-
+	
 	return (
 		<>
-			<UploadImage addUrl={addUrl} />
+			<UploadForm />
 			<br/>
+			<p>click on the image for delete</p>
 			<div className='gallery-wrapper'>
-				{
-					Object.keys(photoUrls).map((id) => {
-						return <div className="img-wrapper" key={id}>
-							<Image src={photoUrls[id].url} />
-						</div>
-					})
-				}
+				{photos 
+					? photos.map((item, index) => <Image src={item} key={index}/>)
+					: ""}
 			</div>
 		</>
 	)
