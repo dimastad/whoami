@@ -1,0 +1,20 @@
+.info {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+  h1 {
+    margin-bottom: 3rem;
+  }
+
+  ul {
+    text-align: left;
+    list-style: square;
+
+    li {
+      margin-bottom: 15px;
+    }
+  }
+}

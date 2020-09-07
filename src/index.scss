@@ -17,3 +17,10 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+a {
+  transition: all 0.3s;
+  &:hover {
+    text-decoration: none;
+  }
+}

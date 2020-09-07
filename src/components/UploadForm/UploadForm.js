@@ -6,24 +6,24 @@ const UploadForm = () => {
   const [src, setSrc] = useState('')
 
   const handleOnChange = (e) => {
-    setSrc(e.target.value)
+    e.target.value && setSrc(e.target.value)
   }
 
   const createData = () => {
     const imgRef = firebase.database().ref('Images');
     const img = {
       src,
-      width: 1,
-      height: 1,
+      // width: 1,
+      // height: 1,
     }
 
-    imgRef.push(img);
+    img.src && imgRef.push(img);
     setSrc('');
   }
 
   return (
     <div className="form">
-      <input type="text" onChange={handleOnChange} value={src} />
+      <input type="text" placeholder="Enter image URL" onChange={handleOnChange} value={src} />
       <button onClick={createData}>Add image</button>
     </div>
   )

@@ -1,12 +1,12 @@
-import React from 'react';
-import Menu from '../Menu/Menu';
-import './Header.scss';
+import React from 'react'
+import Menu from '../Menu/Menu'
+import './Header.scss'
 
 const Header = () => {
 	return (
 		<header>
 			<span>
-				mynameis
+				whoami
 			</span>
 			<Menu/>
 		</header>

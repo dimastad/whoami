@@ -1,6 +1,7 @@
 .gallery-wrapper {
   display: flex;
   flex-flow: row wrap;
+  align-items: flex-start;
   grid-gap: 5px;
   max-width: 860px;
   width: 100%;

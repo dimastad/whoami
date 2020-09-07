@@ -1,4 +1,5 @@
 import React from 'react'
+import './Image.scss'
 import firebase from '../../util/firebase'
 
 const Image = ({ src }) => {

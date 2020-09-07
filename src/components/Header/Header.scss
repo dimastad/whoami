@@ -9,5 +9,11 @@ header {
 
   span {
     line-height: 28px;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: darkgray;
+    }
   }
 }
