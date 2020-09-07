@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Gallery from './components/Gallery/Gallery';
 import About from './components/About/About';
+import Game from './components/Game/Game';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/about/" component={About} />
             <Route path="/gallery/" component={Gallery} />
+            <Route path="/game/" component={Game} />
           </Switch>
         </main>
       </div>
