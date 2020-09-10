@@ -9,10 +9,9 @@ const Image = ({ src }) => {
   }
   
   return (
-    <button onClick={deleteImage}>
-      <img src={src.src} alt='' />
-    </button>
-    
+    <>
+      <img onClick={deleteImage} src={src.src} alt='' />
+    </>    
   )
 }
 
