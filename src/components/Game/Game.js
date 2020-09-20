@@ -16,20 +16,31 @@ export default () => {
   }
 
   return (
-    <div className="playField">
-      {cells
-        .sort(()=>Math.random() - 0.5)
-        .map((cell, index) => (
-        <div 
-          style={{ order: index }}
-          className={cell.length === 0 
-            ? 'emptyCell'
-            : 'cell'} 
-          key={cell}
-          onClick={handleClick}>
-            {cell}
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="playField">
+        {cells
+          .sort(()=>Math.random() - 0.5)
+          .map((cell, index) => (
+          <div 
+            style={{ order: index }}
+            className={cell.length === 0 
+              ? 'emptyCell'
+              : 'cell'} 
+            key={cell}
+            onClick={handleClick}>
+              {cell}
+          </div>
+        ))}
+      </div>
+      <div className='do'>
+        <p>have to do</p>
+        <ul>
+          <li>prohibit the possibility of cell moves</li>
+          <li>win alert</li>
+          <li>...</li>
+        </ul>
+      </div>
+      
+     </> 
   )
 }
