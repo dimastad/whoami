@@ -1,8 +1,67 @@
-iframe {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 80vh;
+.playField {
+  width: 50vh;
+  height: 50vh;
+  background: lightgrey;
+  border-radius: 10px;
+  margin: auto;
+  padding: 15px;
+  border: 5px solid grey;
+  display: flex;
+  flex-flow: row wrap;
+  box-shadow: 10px 10px 20px darkred;
+}
+
+.emptyCell {
+  width: calc(100% / 4);
+  height: calc(100% / 4);
+}
+
+.cell {
+  width: calc(100% / 4);
+  height: calc(100% / 4);
+  background-color: darkred;
+  display: inline-flex;
+  border-radius: 10px;
+  margin: 0px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  font-size: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: wheat;
+  box-shadow: 5px 5px 15px black;
+  user-select: none;
+  cursor: grab;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgba(139, 0, 0, 0.62);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+
+
+
+.refresh {
+  display: block;
+  margin: 0 auto;
+  width: 50vh;
+  text-align: center;
+  margin-top: 5vh;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: black;
+}
+
+.refused {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  color: darkred;
 }
