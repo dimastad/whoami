@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6bca1bd2fd4c8812e6264903b7bfc569",
+    "revision": "fd93e09a99c48dae8413369c0b1247ee",
     "url": "/whoami/index.html"
   },
   {
-    "revision": "7b49132066fff8758e45",
-    "url": "/whoami/static/css/main.e4c5358b.chunk.css"
+    "revision": "d3ba65c2efa0304a6cf6",
+    "url": "/whoami/static/css/main.e590247a.chunk.css"
   },
   {
     "revision": "d62e0263fea540d59dc5",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/whoami/static/js/2.76d6f2f8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7b49132066fff8758e45",
-    "url": "/whoami/static/js/main.d0c3d84c.chunk.js"
+    "revision": "d3ba65c2efa0304a6cf6",
+    "url": "/whoami/static/js/main.f5539fd0.chunk.js"
   },
   {
     "revision": "2e1cd578dc72c6eb9693",
