@@ -3,6 +3,7 @@ import UploadForm from '../UploadForm/UploadForm'
 import Image from '../Image/Image'
 import firebase from '../../util/firebase'
 import './Gallery.scss'
+import Loader from '../Loader/Loader'
 
 const Gallery = () => {
 	const [photos, setPhotos] = useState()
@@ -27,7 +28,7 @@ const Gallery = () => {
 			<div className='gallery-wrapper'>
 				{photos 
 					? photos.map((item, index) => <Image src={item} key={index}/>)
-					: ""}
+					: <Loader />}
 			</div>
 		</>
 	)
