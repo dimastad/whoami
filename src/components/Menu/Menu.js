@@ -24,7 +24,7 @@ const Menu = () => {
 				<nav className="menu" onClick={toggleMenu} >
 					<ul className="menu__list">
 						<li className="menu__list-item">
-							<Link to="/">Home</Link>
+							<Link to="/whoami/">Home</Link>
 						</li>
 						<li className="menu__list-item">
 							<Link to="/about/">AboutMe</Link>

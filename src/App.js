@@ -14,7 +14,7 @@ function App() {
         <Header />
         <main className="App-main">
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/whoami/" component={Home} />
             <Route path="/about/" component={About} />
             <Route path="/gallery/" component={Gallery} />
             <Route path="/game/" component={Game} />
