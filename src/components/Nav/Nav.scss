@@ -1,0 +1,33 @@
+.nav {
+
+  &__list {
+    display: flex;
+  }
+
+  &__list-item {
+    margin-right: 15px;
+    padding: 10px;
+
+    a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    &:hover {
+      a {
+        color: grey;
+      }
+    }
+
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .nav {
+    display: none;
+  }
+}
