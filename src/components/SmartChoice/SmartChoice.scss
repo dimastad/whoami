@@ -1,10 +1,114 @@
+// ant style
+.ant-switch {
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 12px;
+  font-variant: tabular-nums;
+  line-height: 1.66667;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+          font-feature-settings: 'tnum';
+  position: relative;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  min-width: 40px;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-radius: 100px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+
+  &:focus {
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 0 2px rgba(77, 55, 55, 0.1);
+  }
+
+  &:focus:hover {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+
+
+.ant-switch-checked {
+  background-color: #1890ff;
+
+  :focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+            box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+
+  .ant-switch-handle {
+    left: calc(100% - 18px - 2px);
+  }
+  
+  .ant-switch-inner {
+    margin: 0 25px 0 7px;
+  }
+}
+.ant-switch-handle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    border-radius: 9px;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+            box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    content: '';
+  }
+}
+
+.ant-switch:not(.ant-switch-disabled):active .ant-switch-handle::before {
+  right: -30%;
+  left: 0;
+}
+.ant-switch:not(.ant-switch-disabled):active.ant-switch-checked .ant-switch-handle::before {
+  right: 0;
+  left: -30%;
+}
+.ant-switch-inner {
+  display: block;
+  margin: 0 7px 0 25px;
+  color: #fff;
+  font-size: 12px;
+  -webkit-transition: margin 0.2s;
+  transition: margin 0.2s;
+}
+
+// end ant style
+
 .switch {
   padding: 20px;
   border: 2px solid grey;
   margin: 0 auto;
   max-width: 50%;
+  border-radius: 10px;
 
-  &>.header {
+  &__header {
     display: block;
     margin-bottom: 25px;
   }

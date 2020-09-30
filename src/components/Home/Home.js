@@ -1,5 +1,4 @@
 import React from 'react';
-// import SmartChoice from '../SmartChoice/SmartChoice';
 import './Home.scss'
 
 const Home = () => {
@@ -10,7 +9,6 @@ const Home = () => {
 				<p className="promo__PS">(...at least I try)</p>
 			</div>
 			<br />
-			{/* <SmartChoice /> */}
 		</>
 	)
 };

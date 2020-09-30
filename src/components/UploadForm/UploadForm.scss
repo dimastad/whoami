@@ -11,7 +11,8 @@
     background: linear-gradient(180deg, rgba(128,128,128,0.32167832167832167) 18%, rgba(0,5,14,1) 100%);
   }
 
-  button {
+  .button {
+    width: auto;
     background-color: black;
     padding: 10px 35px;
     margin-top: 15px;
@@ -32,4 +33,11 @@
       color: rgba(0, 0, 0, 0.5);
     }
   }
+}
+
+.preview {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  max-width: inherit;
 }

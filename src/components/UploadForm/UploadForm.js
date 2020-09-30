@@ -4,17 +4,27 @@ import firebase from '../../util/firebase'
 
 const UploadForm = () => {
   const [src, setSrc] = useState('')
+  const [size, setSize] = useState({})
 
   const handleOnChange = (e) => {
     e.target.value && setSrc(e.target.value)
   }
 
-  const createData = () => {
+  const onLoad = ({target:img}) => {
+    setSize({
+      width: img.offsetWidth,
+      height: img.offsetHeight
+    })
+  }
+
+  const createData = (e) => {
+    e.preventDefault();
     const imgRef = firebase.database().ref('Images');
+    const {width, height} = size;
     const img = {
       src,
-      // width: 1,
-      // height: 1,
+      width,
+      height,
     }
 
     img.src && imgRef.push(img);
@@ -22,10 +32,21 @@ const UploadForm = () => {
   }
 
   return (
-    <div className="form">
+    <>
+    <form 
+      onSubmit={createData}
+      className="form">
       <input type="text" placeholder="Enter image URL" onChange={handleOnChange} value={src} />
-      <button onClick={createData}>Add image</button>
-    </div>
+      
+      {/* <input type='file' placeholder="Choose your file" /> */}
+      {/* <button onClick={createData}>Add image</button> */}
+      <input 
+        type='submit'
+        value='add image'
+        className='button' />
+    </form>
+    <img className="preview" onLoad={onLoad} src={src} alt="" />
+    </>
   )
 }
 
