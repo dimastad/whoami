@@ -1,14 +1,17 @@
 .gallery-wrapper {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  grid-gap: 10px;
-  max-width: 860px;
   width: 100%;
   margin: 0 auto;
+  height: calc(100vh - 340px);
+  overflow-y: scroll;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid grey;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   img{
-    max-height: 180px;
     transition: all 0.3s;
     border-radius: 10px;
 
