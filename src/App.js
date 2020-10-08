@@ -15,9 +15,9 @@ function App() {
         <main className="App-main">
           <Switch>
             <Route exact path="/whoami/" component={Home} />
-            <Route path="/about/" component={About} />
-            <Route path="/gallery/" component={ImageList} />
-            <Route path="/game/" component={Game} />
+            <Route exact path="/about/" component={About} />
+            <Route exact path="/gallery/" component={ImageList} />
+            <Route exact path="/game/" component={Game} />
           </Switch>
         </main>
       </div>
