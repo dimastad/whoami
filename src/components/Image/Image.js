@@ -7,11 +7,11 @@ const Image = ({ src }) => {
     const imgRef = firebase.database().ref('Images').child(src.id);
     imgRef.remove();
   }
-  
+
   return (
     <>
-      <img onClick={deleteImage} src={src.src} alt='' />
-    </>    
+      <img onClick={deleteImage} src={src} alt='' />
+    </>
   )
 }
 

@@ -33,14 +33,12 @@ const UploadForm = () => {
 
   return (
     <>
-    <form 
+    <form
       onSubmit={createData}
       className="form">
       <input type="text" placeholder="Enter image URL" onChange={handleOnChange} value={src} />
-      
-      {/* <input type='file' placeholder="Choose your file" /> */}
-      {/* <button onClick={createData}>Add image</button> */}
-      <input 
+
+      <input
         type='submit'
         value='add image'
         className='button' />

@@ -23,24 +23,24 @@ export const SmartChoice = () => {
 
   return (
     <div className="switch">
-      <span className="switch__header">Choose work scheme</span>
+      <span className="switch__header">Work scheme</span>
       <div className="switch__wrapper">
-        <Switch 
+        <Switch
           className="switch__item"
-          checkedChildren="Good" 
-          unCheckedChildren="Good" 
+          checkedChildren="Good"
+          unCheckedChildren="Good"
           onChange={onChangeGood}
           checked={good}/>
-        <Switch 
+        <Switch
           className="switch__item"
-          checkedChildren="Cheap" 
-          unCheckedChildren="Cheap" 
+          checkedChildren="Cheap"
+          unCheckedChildren="Cheap"
           onChange={onChangeCheap}
           checked={cheap}/>
-        <Switch 
+        <Switch
           className="switch__item"
-          checkedChildren="Fast" 
-          unCheckedChildren="Fast" 
+          checkedChildren="Fast"
+          unCheckedChildren="Fast"
           onChange={onChangeFast}
           checked={fast}/>
       </div>
