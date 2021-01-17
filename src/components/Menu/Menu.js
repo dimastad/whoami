@@ -29,9 +29,9 @@ const Menu = () => {
 						<li className="menu__list-item">
 							<Link to="/about/">AboutMe</Link>
 						</li>
-						<li className="menu__list-item">
+						{/* <li className="menu__list-item">
 							<Link to="/gallery/">Gallery</Link>
-						</li>
+						</li> */}
 						<li className="menu__list-item">
 							<Link to="/game/">Game</Link>
 						</li>

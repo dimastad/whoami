@@ -13,9 +13,9 @@ const Nav = () => {
           <li className="nav__list-item">
             <Link to="/about/">aboutMe</Link>
           </li>
-          <li className="nav__list-item">
+          {/* <li className="nav__list-item">
             <Link to="/gallery/">gallery</Link>
-          </li>
+          </li> */}
           <li className="nav__list-item">
             <Link to="/game/">game</Link>
           </li>
