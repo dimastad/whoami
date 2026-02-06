@@ -1,0 +1,65 @@
+---
+
+---
+
+<div id="container">
+	
+	<main>
+		<section id="hero">
+			
+			<h1>
+				I dev UI.
+			</h1>
+			<p>At least I try...</p>
+			
+		</section>
+	</main>
+</div>
+
+<style>
+	#container {
+		/* font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif; */
+		height: 100%;
+	}
+
+	main {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		background: #0a0a0a;
+	}
+
+	#hero {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+		padding: 16px;
+		color: #f0f0f0;
+	}
+
+	h1 {
+		font-size: 6em;
+		margin: 0.25em 0;
+	}
+
+	p {
+		font-size: 1.5em;
+		margin: 0;
+	}
+
+	@media screen and (max-width: 768px) {
+		#container {
+			display: flex;
+			flex-direction: column;
+		}
+
+		h1 {
+			font-size: 3em;
+		}
+
+		p {
+			font-size: 1em;
+		}
+	}
+</style>
