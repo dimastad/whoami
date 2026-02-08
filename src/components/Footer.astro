@@ -1,0 +1,39 @@
+<footer>
+    <ul>
+        <li>
+            <a class="link" href="#cv">
+                <span>&#8594;&nbsp;</span>
+                cv
+            </a>
+        </li>
+        <li>
+            <a class="link" href="#tg">
+                <span>&#8594;&nbsp;</span>
+                telegram
+            </a>
+        </li>
+    </ul>
+</footer>
+
+<style>
+    footer {
+		display: flex;
+		justify-content: center;
+	}
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		padding: 0;
+
+		li {
+			list-style-type: none;
+			transition: var(--hover-transition);
+		}
+
+		li:hover {
+			transform: translateX(5px);
+		}
+	}
+</style>

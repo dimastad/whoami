@@ -1,4 +1,11 @@
 :root {
   --font-color: #e8e9ed;
   --background-color: #222225;
+  --hover-transition: 0.3s;
+}
+
+.link {
+  display: block;
+  color: var(--font-color);
+  text-decoration: none;
 }
