@@ -1,0 +1,25 @@
+{
+  "name": "Портнов Дмитрий Иванович",
+  "role": "Разработчик интерфейсов",
+  "location": "Ульяновск · готов к релокации и редким командировкам",
+  "contacts": [
+    {
+      "id": "phone",
+      "type": "phone",
+      "label": "+7 (917) 052‑01‑45",
+      "href": "tel:+79170520145"
+    },
+    {
+      "id": "email",
+      "type": "email",
+      "label": "dmitrii_portnov@mail.ru",
+      "href": "mailto:dmitrii_portnov@mail.ru"
+    },
+    {
+      "id": "tg",
+      "type": "telegram",
+      "label": "@dimastad",
+      "href": "https://t.me/dimastad"
+    }
+  ]
+}

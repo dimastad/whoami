@@ -1,0 +1,334 @@
+---
+import Layout from '@src/layouts/Layout.astro';
+import Card from '@src/components/Card.astro';
+import sidebarSections from '@src/content/cv/sidebar.json';
+import experience from '@src/content/cv/experience.json';
+import personal from '@src/content/cv/personal.json';
+
+type listItemType = {
+	item: string,
+	href?: string
+}
+type listItems = listItemType[];
+type SidebarSectionType = 'paragraphs' | 'list' | 'tags';
+
+type SidebarSection = {
+	id: string;
+	title: string;
+	type: SidebarSectionType;
+	paragraphs?: string[];
+	items?: listItems;
+	tags?: string[];
+};
+
+type Job = {
+	id: string;
+	title: string;
+	company: string;
+	location?: string;
+	period: string;
+	domain?: string;
+	bullets: string[];
+};
+
+type ContactType = 'phone' | 'email' | 'telegram';
+
+type Contact = {
+	id: string;
+	type: ContactType;
+	label: string;
+	href: string;
+	note?: string;
+};
+
+type PersonalInfoType = {
+	name: string;
+	role: string;
+	location: string;
+	contacts: Contact[]
+}
+
+const sidebar = sidebarSections as SidebarSection[];
+const cvExperience = experience as { totalExperience: string; jobs: Job[] };
+const personalInfo = personal as PersonalInfoType;
+---
+
+<Layout>
+	<main id="cv">
+		<section class="cv-hero">
+			<div class="cv-hero__title">
+				<p class="cv-hero__label">Резюме</p>
+				<h1>{personalInfo.name}</h1>
+				<p class="cv-hero__role">{personalInfo.role}</p>
+			</div>
+
+			<div class="cv-hero__meta">
+				<p class="cv-hero__location">{personalInfo.location}</p>
+				<ul class="cv-contacts">
+					{personalInfo.contacts.map((contact) => (
+						<li>
+							{contact.type === 'telegram' ? (
+								<a class="link" href={contact.href} target="_blank" rel="noopener noreferrer">
+									{contact.label}
+								</a>
+							) : (
+								<a href={contact.href}>{contact.label}</a>
+							)}
+							{contact.note && <span class="muted"> — {contact.note}</span>}
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+
+		<section class="cv-grid">
+			<aside class="cv-sidebar">
+				{sidebar.map((section) => (
+					<Card title={section.title}>
+						{section.type === 'paragraphs' && (
+							section.paragraphs?.map((text) => (
+								<p>{text}</p>
+							))
+						)}
+
+						{section.type === 'list' && (
+							<ul class="cv-list">
+								{section.items?.map((item) => (
+									<li>
+										<a
+											href={item.href}
+											target="_blank"
+											rel="noopener noreferrer">
+												{item.item}
+										</a>
+									</li>
+								))}
+							</ul>
+						)}
+
+						{section.type === 'tags' && (
+							<ul class="cv-tags">
+								{section.tags?.map((tag) => (
+									<li>{tag}</li>
+								))}
+							</ul>
+						)}
+					</Card>
+				))}
+			</aside>
+
+			<section class="cv-main">
+				<Card title={`Опыт работы — ${cvExperience.totalExperience}`}>
+					{cvExperience.jobs.map((job) => (
+						<article class="cv-job">
+							<header class="cv-job__header">
+								<div>
+									<h3>{job.title} · {job.company}</h3>
+									<p class="cv-job__meta">{job.period}{job.location ? ` · ${job.location}` : ''}</p>
+								</div>
+								{job.domain && <p class="cv-job__domain">{job.domain}</p>}
+							</header>
+							<ul class="cv-list">
+								{job.bullets.map((item) => (
+									<li>{item}</li>
+								))}
+							</ul>
+						</article>
+					))}
+				</Card>
+			</section>
+		</section>
+
+		<p class="cv-updated muted">
+			Резюме обновлено 7 февраля 2026 г.
+		</p>
+	</main>
+</Layout>
+
+<style>
+	#cv {
+		max-width: 1120px;
+		margin: 0 auto;
+		padding: 3rem 1.5rem 4rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+	}
+
+	.cv-hero {
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+		align-items: flex-start;
+		border-radius: 16px;
+		padding: 1.75rem 1.75rem 1.5rem;
+		background: radial-gradient(circle at top left, #363654, #222225);
+		box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+	}
+
+	.cv-hero__title h1 {
+		font-size: 2.4rem;
+		margin: 0.1rem 0 0.25rem;
+	}
+
+	.cv-hero__label {
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--muted-color, #a0a3b1);
+		margin: 0 0 0.35rem;
+	}
+
+	.cv-hero__role {
+		margin: 0;
+		font-size: 1.15rem;
+		color: var(--muted-color, #b6b8c6);
+	}
+
+	.cv-hero__meta {
+		max-width: 340px;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.cv-hero__location {
+		margin: 0;
+		font-size: 0.95rem;
+		color: var(--muted-color, #b6b8c6);
+	}
+
+	.cv-contacts {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		font-size: 0.95rem;
+	}
+
+	.cv-contacts a {
+		display: inline-block;
+		color: inherit;
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		transition: border-color 0.15s ease, color 0.15s ease;
+	}
+
+	.cv-contacts a:hover {
+		border-color: currentColor;
+	}
+
+	.cv-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.9fr);
+		gap: 1.75rem;
+		align-items: flex-start;
+	}
+
+	.cv-sidebar,
+	.cv-main {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.cv-card {
+		border-radius: 16px;
+		padding: 1.4rem 1.5rem;
+		background: var(--background-color);
+		box-shadow: none;
+	}
+
+	.cv-card h2 {
+		margin: 0 0 0.75rem;
+		font-size: 1.2rem;
+	}
+
+	.cv-list {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+
+		a {
+			text-decoration: none;
+			color: var(--font-color);
+		}
+	}
+
+	.cv-tags {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+
+	.cv-tags li {
+		font-size: 0.85rem;
+		padding: 0.25rem 0.55rem;
+		border-radius: 999px;
+		background: rgba(120, 122, 140, 0.24);
+	}
+
+	.cv-main .cv-card h2 {
+		margin-bottom: 1rem;
+	}
+
+	.cv-job {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		padding: 0.4rem 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.cv-job__header {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.75rem;
+		align-items: flex-start;
+	}
+
+	.cv-job__meta {
+		margin: 0;
+		font-size: 0.95rem;
+		color: var(--muted-color, #a0a3b1);
+	}
+
+	.cv-job__domain {
+		margin: 0;
+		font-size: 0.9rem;
+		color: var(--muted-color, #9b9eb0);
+	}
+
+	.muted {
+		color: var(--muted-color, #a0a3b1);
+	}
+
+	.cv-updated {
+		font-size: 0.9rem;
+		text-align: right;
+		color: var(--muted-color, #a0a3b1);
+	}
+
+	@media (max-width: 768px) {
+		#cv {
+			padding: 2rem 1rem 3rem;
+			gap: 2rem;
+		}
+
+		.cv-hero {
+			flex-direction: column;
+		}
+
+		.cv-grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+</style>
+
