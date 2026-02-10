@@ -1,0 +1,75 @@
+---
+interface Props {
+  title: string;
+  loading?: boolean;
+  lines?: number;
+}
+
+const {
+  title,
+  loading = false,
+  lines = 5,
+} = Astro.props as Props;
+
+const skeletonLines = Array.from({ length: lines });
+---
+
+<section class={`cv-card${loading ? ' cv-card--loading' : ''}`}>
+  <h2>{title}</h2>
+
+  {loading ? (
+    <div class="cv-card__skeleton">
+      {skeletonLines.map((_, index) => (
+        <div class="skeleton-line" data-index={index} />
+      ))}
+    </div>
+  ) : (
+    <slot />
+  )}
+</section>
+
+<style>
+  .cv-card {
+    border-radius: 16px;
+    padding: 1.4rem 1.5rem;
+    background: rgba(22, 22, 28, 0.98);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .cv-card h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .cv-card__skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skeleton-line {
+    height: 0.9rem;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.06)
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.3s ease-in-out infinite;
+  }
+
+  .skeleton-line:nth-child(1) { width: 85%; }
+  .skeleton-line:nth-child(2) { width: 95%; }
+  .skeleton-line:nth-child(3) { width: 70%; }
+
+  @keyframes skeleton-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+</style>
