@@ -10,6 +10,7 @@ deploy:
 
 	# переключиться на gh-pages и залить билд
 	@git checkout $(DEPLOY_BRANCH)
+	@git rm -r . || echo "Nothing to remove"
 	@cp -r ../$(BUILD_DIR)/* . 2>/dev/null || cp -r $(BUILD_DIR)/* .
 	@git add .
 	@git commit -m "Deploy" || echo "Nothing to commit"
