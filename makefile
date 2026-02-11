@@ -18,3 +18,4 @@ deploy:
 
 	# вернуться на main
 	@git checkout $(MAIN_BRANCH)
+ 
