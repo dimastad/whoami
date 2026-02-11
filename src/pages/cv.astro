@@ -51,6 +51,9 @@ type PersonalInfoType = {
 const sidebar = sidebarSections as SidebarSection[];
 const cvExperience = experience as { totalExperience: string; jobs: Job[] };
 const personalInfo = personal as PersonalInfoType;
+
+const ABOUT_SECTION_ID = 'about';
+const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 ---
 
 <Layout>
@@ -81,39 +84,53 @@ const personalInfo = personal as PersonalInfoType;
 			</div>
 		</section>
 
+		{aboutSection && (
+			<section class="cv-about">
+				<Card title={aboutSection.title}>
+					{aboutSection.type === 'paragraphs' && (
+						aboutSection.paragraphs?.map((text) => (
+							<p>{text}</p>
+						))
+					)}
+				</Card>
+			</section>
+		)}
+
 		<section class="cv-grid">
 			<aside class="cv-sidebar">
 				{sidebar.map((section) => (
-					<Card title={section.title}>
-						{section.type === 'paragraphs' && (
-							section.paragraphs?.map((text) => (
-								<p>{text}</p>
-							))
-						)}
+					<div class={`cv-sidebar-section${section.id === ABOUT_SECTION_ID ? ' cv-sidebar-section--about' : ''}`}>
+						<Card title={section.title}>
+							{section.type === 'paragraphs' && (
+								section.paragraphs?.map((text) => (
+									<p>{text}</p>
+								))
+							)}
 
-						{section.type === 'list' && (
-							<ul class="cv-list">
-								{section.items?.map((item) => (
-									<li>
-										<a
-											href={item.href}
-											target="_blank"
-											rel="noopener noreferrer">
-												{item.item}
-										</a>
-									</li>
-								))}
-							</ul>
-						)}
+							{section.type === 'list' && (
+								<ul class="cv-list">
+									{section.items?.map((item) => (
+										<li>
+											<a
+												href={item.href}
+												target="_blank"
+												rel="noopener noreferrer">
+													{item.item}
+											</a>
+										</li>
+									))}
+								</ul>
+							)}
 
-						{section.type === 'tags' && (
-							<ul class="cv-tags">
-								{section.tags?.map((tag) => (
-									<li>{tag}</li>
-								))}
-							</ul>
-						)}
-					</Card>
+							{section.type === 'tags' && (
+								<ul class="cv-tags">
+									{section.tags?.map((tag) => (
+										<li>{tag}</li>
+									))}
+								</ul>
+							)}
+						</Card>
+					</div>
 				))}
 			</aside>
 
@@ -220,6 +237,10 @@ const personalInfo = personal as PersonalInfoType;
 		border-color: currentColor;
 	}
 
+	.cv-about {
+		display: none;
+	}
+
 	.cv-grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.9fr);
@@ -304,6 +325,8 @@ const personalInfo = personal as PersonalInfoType;
 		margin: 0;
 		font-size: 0.9rem;
 		color: var(--muted-color, #9b9eb0);
+		text-align: right;
+		white-space: nowrap;
 	}
 
 	.muted {
@@ -326,8 +349,26 @@ const personalInfo = personal as PersonalInfoType;
 			flex-direction: column;
 		}
 
+		.cv-about {
+			display: block;
+		}
+
 		.cv-grid {
-			grid-template-columns: minmax(0, 1fr);
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.cv-main {
+			order: 1;
+		}
+
+		.cv-sidebar {
+			order: 2;
+		}
+
+		.cv-sidebar-section--about {
+			display: none;
 		}
 	}
 </style>
