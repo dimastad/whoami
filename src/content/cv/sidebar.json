@@ -5,7 +5,7 @@
     "title": "Обо мне",
     "paragraphs": [
       "Frontend-разработчик с почти 8-летним опытом коммерческой разработки. Проходил путь от HTML-верстальщика до разработчика интерфейсов в крупных компаниях и финтех-проектах.",
-      "Комфортно чувствую себя в командной разработке, участвую в рефакторинге и развитии дизайн-систем, люблю аккуратный UI и понятный код."
+      "Люблю аккуратный UI и понятный код."
     ]
   },
   {
@@ -13,7 +13,7 @@
     "type": "paragraphs",
     "paragraphs": [
       "Тип занятости: полная.",
-      "Формат работы: удалённо или в офисе."
+      "Формат работы: удалённо; возможен офис"
     ]
   },
   {
@@ -21,33 +21,25 @@
     "type": "tags",
     "title": "Ключевые навыки",
     "tags": [
-      "JavaScript",
+      "JavaScript (ES6+)",
       "TypeScript",
       "React",
-      "HTML5",
-      "CSS3",
+      "React Router v6",
       "Redux",
+      "React Query",
+      "React Hook Form",
+      "Styled Components",
+      "HTML5",
+      "CSS3 / SCSS",
+      "REST API",
       "Git",
       "Jest",
-      "Cypress"
+      "Cypress",
+      "i18n",
+      "Node.js/Express (Fake API)"
     ]
   },
-  {
-    "id": "languages",
-    "type": "list",
-    "title": "Языки",
-    "items": [
-      {
-        "item": "Английский"
-      },
-      {
-        "item": "Татарский"
-      },
-      {
-        "item": "Чувашский"
-      }
-    ]
-  },
+  
   {
     "id": "education",
     "type": "paragraphs",
