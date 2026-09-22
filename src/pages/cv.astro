@@ -143,7 +143,7 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 						<article class="cv-job">
 							<header class="cv-job__header">
 								<div>
-									<h3>{job.title} · {job.company}</h3>
+									<h3>{job.title}{job.company ? ` · ${job.company}` : ''}</h3>
 									<p class="cv-job__meta">{job.period}{job.location ? ` · ${job.location}` : ''}</p>
 								</div>
 								{job.domain && <p class="cv-job__domain">{job.domain}</p>}
@@ -180,7 +180,7 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 		justify-content: space-between;
 		gap: 2rem;
 		align-items: center;
-		border-radius: 16px;
+		border-radius: var(--radius);
 		padding: 1.75rem 1.75rem 1.5rem;
 		background: radial-gradient(circle at top left, #363654, #222225);
 		box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
@@ -194,7 +194,7 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 	.cv-hero__role {
 		margin: 0;
 		font-size: 1.15rem;
-		color: var(--muted-color, #b6b8c6);
+		color: var(--muted-color-light);
 	}
 
 	.cv-hero__meta {
@@ -206,9 +206,6 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 
 
 	.cv-contacts {
-		list-style: none;
-		margin: 0;
-		padding: 0;
 		display: flex;
 		flex-direction: column;
 		gap: 0.35rem;
@@ -235,27 +232,15 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 	}
 
 
-	.cv-main {
+.cv-main {
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
 	}
 
-	.cv-card {
-		border-radius: 16px;
-		padding: 1.4rem 1.5rem;
-		background: var(--background-color);
-		box-shadow: none;
-	}
-
-	.cv-card h2 {
-		margin: 0 0 0.75rem;
-		font-size: 1.2rem;
-	}
-
 	.cv-list {
-		margin: 0;
 		padding-left: 1.25rem;
+		list-style: disc;
 		display: flex;
 		flex-direction: column;
 		gap: 0.35rem;
@@ -267,9 +252,6 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 	}
 
 	.cv-tags {
-		margin: 0;
-		padding: 0;
-		list-style: none;
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.4rem;
@@ -280,10 +262,6 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 		padding: 0.25rem 0.55rem;
 		border-radius: 999px;
 		background: rgba(120, 122, 140, 0.24);
-	}
-
-	.cv-main .cv-card h2 {
-		margin-bottom: 1rem;
 	}
 
 	.cv-job {
@@ -304,25 +282,24 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 	.cv-job__meta {
 		margin: 0;
 		font-size: 0.95rem;
-		color: var(--muted-color, #a0a3b1);
+		color: var(--muted-color);
 	}
 
 	.cv-job__domain {
 		margin: 0;
 		font-size: 0.9rem;
-		color: var(--muted-color, #9b9eb0);
+		color: var(--muted-color);
 		text-align: right;
 		white-space: nowrap;
 	}
 
 	.muted {
-		color: var(--muted-color, #a0a3b1);
+		color: var(--muted-color);
 	}
 
 	.cv-updated {
 		font-size: 0.9rem;
 		text-align: right;
-		color: var(--muted-color, #a0a3b1);
 	}
 
 	@media (max-width: 768px) {
