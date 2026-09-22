@@ -45,6 +45,12 @@ type PersonalInfoType = {
 	name: string;
 	role: string;
 	location: string;
+	about: {
+		id: string;
+		type: string, 
+		title: string;
+		paragraphs?: string[];
+	}
 	contacts: Contact[]
 }
 
@@ -60,13 +66,13 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 	<main id="cv">
 		<section class="cv-hero">
 			<div class="cv-hero__title">
-				<p class="cv-hero__label">Резюме</p>
 				<h1>{personalInfo.name}</h1>
 				<p class="cv-hero__role">{personalInfo.role}</p>
-			</div>
 
-			<div class="cv-hero__meta">
-				<p class="cv-hero__location">{personalInfo.location}</p>
+				<br/>
+				<br/>
+				<br/>
+
 				<ul class="cv-contacts">
 					{personalInfo.contacts.map((contact) => (
 						<li>
@@ -82,30 +88,27 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 					))}
 				</ul>
 			</div>
-		</section>
 
-		{aboutSection && (
-			<section class="cv-about">
-				<Card title={aboutSection.title}>
-					{aboutSection.type === 'paragraphs' && (
-						aboutSection.paragraphs?.map((text) => (
-							<p>{text}</p>
-						))
-					)}
-				</Card>
-			</section>
-		)}
+			<div class="cv-hero__meta">
+				
+				<section class="cv-about">
+					
+					{personalInfo.about.paragraphs?.map((text) => (
+						<p>{text}</p>
+					))}
+					
+				</section>
+				
+				
+			</div>
+		</section>
 
 		<section class="cv-grid">
 			<aside class="cv-sidebar">
 				{sidebar.map((section) => (
 					<div class={`cv-sidebar-section${section.id === ABOUT_SECTION_ID ? ' cv-sidebar-section--about' : ''}`}>
 						<Card title={section.title}>
-							{section.type === 'paragraphs' && (
-								section.paragraphs?.map((text) => (
-									<p>{text}</p>
-								))
-							)}
+							
 
 							{section.type === 'list' && (
 								<ul class="cv-list">
@@ -135,7 +138,7 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 			</aside>
 
 			<section class="cv-main">
-				<Card title={`Опыт работы — ${cvExperience.totalExperience}`}>
+				<Card title={`Опыт работы`}>
 					{cvExperience.jobs.map((job) => (
 						<article class="cv-job">
 							<header class="cv-job__header">
@@ -157,7 +160,7 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 		</section>
 
 		<p class="cv-updated muted">
-			Резюме обновлено 17 сентября 2026 г.
+			Обновлено {new Date().toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })}
 		</p>
 	</main>
 </Layout>
@@ -176,7 +179,7 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 		display: flex;
 		justify-content: space-between;
 		gap: 2rem;
-		align-items: flex-start;
+		align-items: center;
 		border-radius: 16px;
 		padding: 1.75rem 1.75rem 1.5rem;
 		background: radial-gradient(circle at top left, #363654, #222225);
@@ -188,14 +191,6 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 		margin: 0.1rem 0 0.25rem;
 	}
 
-	.cv-hero__label {
-		font-size: 0.85rem;
-		text-transform: uppercase;
-		letter-spacing: 0.12em;
-		color: var(--muted-color, #a0a3b1);
-		margin: 0 0 0.35rem;
-	}
-
 	.cv-hero__role {
 		margin: 0;
 		font-size: 1.15rem;
@@ -203,17 +198,12 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 	}
 
 	.cv-hero__meta {
-		max-width: 340px;
+		max-width: 50%;
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
 	}
 
-	.cv-hero__location {
-		margin: 0;
-		font-size: 0.95rem;
-		color: var(--muted-color, #b6b8c6);
-	}
 
 	.cv-contacts {
 		list-style: none;
@@ -237,10 +227,6 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 		border-color: currentColor;
 	}
 
-	.cv-about {
-		display: none;
-	}
-
 	.cv-grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.9fr);
@@ -248,7 +234,7 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 		align-items: flex-start;
 	}
 
-	.cv-sidebar,
+
 	.cv-main {
 		display: flex;
 		flex-direction: column;
@@ -349,8 +335,8 @@ const aboutSection = sidebar.find((section) => section.id === ABOUT_SECTION_ID);
 			flex-direction: column;
 		}
 
-		.cv-about {
-			display: block;
+		.cv-hero__meta {
+			max-width: 100%;
 		}
 
 		.cv-grid {
